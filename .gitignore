@@ -1,0 +1,2 @@
+.env
+config/.n8n.docker.secret.env
