@@ -52,3 +52,28 @@ services:
     volumes:  
       - ./data/n8n:/home/node/.n8n
       - ./data/n8n_local_files:/files
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    # container_name: 'rabbitmq'
+    tty: true
+    stdin_open: true
+    ports:
+      # rabbitmq port
+      - 5672:5672
+      # Management console port (remove once routed by traefik)
+      - 15672:15672
+    volumes:
+      - ./data/rabbitmq_data:/var/lib/rabbitmq/
+      - ./rabbitmq_log:/var/log/rabbitmq
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.${DOMAIN_NAME}`)
+      # - traefik.http.routers.rabbitmq.tls=true
+      - traefik.http.routers.rabbitmq.tls=false
+      # - traefik.http.routers.rabbitmq.entrypoints=web,websecure
+      - traefik.http.routers.rabbitmq.entrypoints=web
+      # - traefik.http.routers.rabbitmq.tls.certresolver=mytlschallenge
+      # - traefik.http.routers.n8n.middlewares=n8n@docker
+      - traefik.http.services.rabbitmq.loadbalancer.server.port=15672
+
