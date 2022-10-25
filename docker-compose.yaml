@@ -56,13 +56,14 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     # container_name: 'rabbitmq'
+    hostname: rabbitmq.local
     tty: true
     stdin_open: true
     ports:
       # rabbitmq port
       - 5672:5672
       # Management console port (remove once routed by traefik)
-      - 15672:15672
+      # - 15672:15672
     volumes:
       - ./data/rabbitmq_data:/var/lib/rabbitmq/
       - ./rabbitmq_log:/var/log/rabbitmq
