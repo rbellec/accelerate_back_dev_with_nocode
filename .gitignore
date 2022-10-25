@@ -3,3 +3,4 @@ config/.n8n.docker.secret.env
 
 data/n8n/*
 !data/n8n/.gitkeep
+docker-compose.override.yml
