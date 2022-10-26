@@ -65,7 +65,7 @@ services:
       - ./log/rabbitmq:/var/log/rabbitmq
     labels:
       - traefik.enable=true
-      - traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.${DOMAIN_NAME}`)
+      - traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.local`)
       - traefik.http.routers.rabbitmq.tls=true
       - traefik.http.routers.rabbitmq.entrypoints=web,websecure
       - traefik.http.services.rabbitmq.loadbalancer.server.port=15672
