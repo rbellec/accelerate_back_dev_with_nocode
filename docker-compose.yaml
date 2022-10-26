@@ -13,8 +13,8 @@ services:
       - "--providers.file.directory=/configuration/"
       - "--providers.file.watch=true"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      # - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      # - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--entrypoints.websecure.address=:443"
     ports:
       - "80:80"
@@ -66,11 +66,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.${DOMAIN_NAME}`)
-      # - traefik.http.routers.rabbitmq.tls=true
-      - traefik.http.routers.rabbitmq.tls=false
-      # - traefik.http.routers.rabbitmq.entrypoints=web,websecure
-      - traefik.http.routers.rabbitmq.entrypoints=web
-      # - traefik.http.routers.rabbitmq.tls.certresolver=mytlschallenge
-      # - traefik.http.routers.n8n.middlewares=n8n@docker
+      - traefik.http.routers.rabbitmq.tls=true
+      - traefik.http.routers.rabbitmq.entrypoints=web,websecure
       - traefik.http.services.rabbitmq.loadbalancer.server.port=15672
 
