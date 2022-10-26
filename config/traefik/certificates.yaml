@@ -1,0 +1,12 @@
+# Dynamic configuration
+# Volume is mounted in configuration/certificates.yaml on docker container
+# Certificate are generated with minica
+tls:
+  certificates:
+    # *.local domain
+    - certFile: /configuration/certificates/_.local/cert.pem
+      keyFile: /configuration/certificates/_.local/key.pem
+
+    # *.rbellec.com domain (used only for local dev currently)
+    - certFile: /configuration/certificates/_.rbellec.com/cert.pem
+      keyFile: /configuration/certificates/_.rbellec.com/key.pem
