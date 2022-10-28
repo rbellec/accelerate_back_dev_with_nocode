@@ -7,4 +7,8 @@ data/n8n/*
 
 config/traefik/certificates
 !config/traefik/certificates/.gitkeep
+
+data/rabbitmq_data
+!data/rabbitmq_data/.gitkeep
+
 tmp
