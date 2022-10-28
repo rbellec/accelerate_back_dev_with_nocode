@@ -62,7 +62,7 @@ services:
       # - 15672:15672
     volumes:
       - ./data/rabbitmq_data:/var/lib/rabbitmq/
-      - ./log/rabbitmq:/var/log/rabbitmq
+      - ./log/rabbitmq:/var/logs/rabbitmq
     labels:
       - traefik.enable=true
       - traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.local`)

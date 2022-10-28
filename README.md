@@ -16,3 +16,5 @@ Certificate have been generated using (minica)[https://github.com/jsha/minica], 
 Method : https://traefik.io/blog/traefik-2-tls-101-23b4fbee81f1/
 
 TODO: Write steps to add a certificate for a service (generate in the minica directory: `minica --domains '*.local.com'`, copy in configuration/... add to configuration directory)
+
+Note : Besoin de sql studio pour changer le MDP dans la BDD SQL Lite après installation

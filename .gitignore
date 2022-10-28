@@ -6,4 +6,5 @@ data/n8n/*
 !data/n8n/.gitkeep
 
 config/traefik/certificates
-config/traefik/certificates/.gitkeep
+!config/traefik/certificates/.gitkeep
+tmp
