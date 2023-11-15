@@ -1,0 +1,22 @@
+# To work with combohr application.
+networks:
+  default:
+    name: combohr-network
+    external: true
+
+# To allow dashboard in insecure mode. (yes dashboard you are worthy and beautiful !)
+# services:
+#   traefik:
+#     command:
+#       - "--api.insecure=true" # To open console and API on port 8080
+#       - "--log.level=INFO"
+#     ports:
+#       - "8080:8080" # Only for "insecure mode"
+
+
+# services:
+
+#   n8n:
+
+#   rabbitmq:
+
