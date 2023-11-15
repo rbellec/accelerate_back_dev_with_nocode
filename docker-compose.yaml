@@ -7,6 +7,7 @@ services:
     command:
       - "--api=true"
       - "--api.insecure=true"
+      - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       # To configure certificates.
@@ -16,11 +17,12 @@ services:
       # - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       # - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--entrypoints.websecure.address=:443"
-      # Dashboard
-      - "--api.dashboard=true"
+      - "--log.level=INFO"
+
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.entryPoints=traefik"
+      - "traefik.http.routers.n8n.rule=Host(`traefik.local`)"
+      - "traefik.http.routers.api.entryPoints=traefik,web"
       - "traefik.http.routers.api.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.http.routers.api.middlewares=api-auth"
