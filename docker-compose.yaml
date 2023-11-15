@@ -6,7 +6,7 @@ services:
     restart: always
     command:
       - "--api=true"
-      - "--api.insecure=true"
+      # - "--api.insecure=true" # To open console and API on port 8080
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
@@ -17,12 +17,12 @@ services:
       # - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       # - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--entrypoints.websecure.address=:443"
-      - "--log.level=INFO"
+      # - "--log.level=INFO"
 
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.n8n.rule=Host(`traefik.local`)"
-      - "traefik.http.routers.api.entryPoints=traefik,web"
+      - "traefik.http.routers.api.entryPoints=web"
       - "traefik.http.routers.api.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.http.routers.api.middlewares=api-auth"
@@ -31,7 +31,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
+      # - "8080:8080" # Only for "insecure mode"
     volumes:
       - ./config/traefik/:/configuration
       - /var/run/docker.sock:/var/run/docker.sock:ro

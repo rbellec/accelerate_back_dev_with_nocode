@@ -14,6 +14,15 @@ All services can be accessed through their name via traefik and a personal TLD.
 Currently rabbitmq configuration has to be updated and can be accessed only via its port on
 localhost (http://rabbitmq.local:15672/#/). Open port in docker-compose file to access it from outside.
 
+### Traefik dashboard
+
+Once your /etc/hosts configured, you can access dashboard at http://traefik.local/dashboard/
+
+If you want to access the dashboard & API in insecure mode, you need to uncomment the 2 lines in docker-compose.yml
+(or better, configure them in docker-compose.override.yml). A commented section is placed in docker-compose.override.example.yml.
+
+# - "--api.insecure=true" # To open console and API on port 8080
+# - "8080:8080" # Only for "insecure mode"
 
 traefik  dashboard : http://localhost:8080/dashboard/
 
