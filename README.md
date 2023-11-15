@@ -8,6 +8,14 @@ Here are some tests around this idea.
 
 Default password for rabbitmq management console is `guest`/`guest`
 
+## Access
+
+All services can be accessed through their name via traefik and a personal TLD.
+Currently rabbitmq configuration has to be updated and can be accessed only via its port on
+localhost (http://rabbitmq.local:15672/#/). Open port in docker-compose file to access it from outside.
+
+
+traefik  dashboard : http://localhost:8080/dashboard/
 
 ## Certificates
 
