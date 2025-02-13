@@ -18,6 +18,7 @@ services:
       - "--entrypoints.websecure.address=:443"
 
     labels:
+      - "--log.level=DEBUG"
       - "traefik.enable=true"
       - "traefik.http.routers.api.rule=Host(`traefik.local`)"
       - "traefik.http.routers.api.entryPoints=web"
@@ -61,8 +62,8 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
-    # container_name: 'rabbitmq'
-    hostname: rabbitmq.local
+    container_name: 'rabbitmq'
+    # hostname: rabbitmq.local
     tty: true
     stdin_open: true
     ports:
@@ -77,6 +78,18 @@ services:
       - traefik.enable=true
       - traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.local`)
       - traefik.http.routers.rabbitmq.tls=true
-      - traefik.http.routers.rabbitmq.entrypoints=web,websecure
+      # - traefik.http.routers.rabbitmq.entrypoints=web,websecure
+      - traefik.http.routers.rabbitmq.entrypoints=web
       - traefik.http.services.rabbitmq.loadbalancer.server.port=15672
+      - traefik.http.routers.rabbitmq.middlewares=rabbitmq@docker
+
+      # - traefik.http.middlewares.n8n.headers.SSLRedirect=true
+      # - traefik.http.middlewares.n8n.headers.STSSeconds=315360000
+      # - traefik.http.middlewares.n8n.headers.browserXSSFilter=true
+      # - traefik.http.middlewares.n8n.headers.contentTypeNosniff=true
+      # - traefik.http.middlewares.n8n.headers.forceSTSHeader=true
+      # - traefik.http.middlewares.n8n.headers.SSLHost=${DOMAIN_NAME}
+      # - traefik.http.middlewares.n8n.headers.STSIncludeSubdomains=true
+      # - traefik.http.middlewares.n8n.headers.STSPreload=true
+      # - traefik.http.routers.n8n.middlewares=n8n@docker
 

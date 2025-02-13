@@ -1,3 +1,30 @@
+# TODO
+
+- Rétablir la connexion à la console de commande rabbitmq par traefik
+- Configuration statique des files d'attente dans rabbitmq
+- Créer un engine rails dans l'app pour
+  - Configurer les Gem (Bunny ?) & envoyer des messages amqp
+  - Valider récéption sur trigger n8n
+  - Ajouter gem pour récéption des messages amqp dans l'engine (sneakers ?)
+  - Valider cycle envoi/récéption (un micro worker qui retourne "reçu" avec un élément du message envoyé ? Gardé pour valider l'installation.)
+
+Voir :
+1. https://medium.com/@clementrollon/rails-rabbitmq-actioncable-how-to-build-realtime-microservice-part-1-c25bf00c5187
+2. https://medium.com/@clementrollon/rails-rabbitmq-actioncable-how-to-build-realtime-microservice-part-2-23c5f15c3fef
+
+Passer aux exemples. En vrac :
+- Publier des message slack à partir du n8n (ne peut pas en recevoir sans être sur un serveur public).
+- Possibilité de plug in chat GPT ? -> accès au planning entre deux dates (sur le mois max ? API publique ?) en csv ou json par ex, chatGpt peut en extraire des informations.
+- Si plug in Ok, publi sur slack ou envoir par mail/sms de l'information demandée.
+- Démo d'accès direct à la BDD (ex super utilisateurs)
+
+Démo :
+- Bot avec Chagpt qui va chercher le ticket de caisse et suit un raisonnement pour essayer de trouver le problème ou, au moins, isoler les causes possibles, les plannables concernés, etc.
+- Lister les super users dans slack. Voir si on peut croiser avec les users slack ?
+- Annoncer tout nouvel abonnement dans slack (avec Chargebee ? On peut commencer avec le staging)
+- Un export excel par chat GPT.
+
+
 # No-code and back development
 
 Can we use No-codes tools to complement back development ?
